@@ -1,0 +1,57 @@
+linux/Mac OS X
+
+1.安装perl
+2.安装PAR-Packer-1.025依赖包
+依次检查下面的依赖包是否安装,没有安装,请进入cpan安装
+perldoc Archive::Zip
+perldoc Compress::Zlib
+perldoc File::Temp
+perldoc Getopt::ArgvFile
+perldoc IO::Compress::Gzip
+perldoc Module::ScanDeps
+perldoc PAR
+perldoc PAR::Dist
+perldoc Text::ParseWords
+
+如果没有安装,打开终端,输入cpan
+install Archive::Zip
+install Compress::Zlib
+install File::Temp
+install Getopt::ArgvFile
+install IO::Compress::Gzip
+install Module::ScanDeps
+install PAR
+install PAR::Dist
+install Text::ParseWords
+
+3.打开终端
+	输入  sudo cpan pp
+		如果安装失败,请输入 sudo cpan -fi pp    (多次几次可以装成功)
+4.下载perl脚本中用到模块
+5.转换成可执行程序
+	pp -o result source.pl
+		linux和mac os x不是exe
+		result同时支持32位和64位系统
+
+
+
+
+
+cpan安装失败解决办法:
+cpan -fi module:name
+这样即使在make test出错也能正常安装
+
+
+
+上述办法还是经常安装失败:
+	这时需要适当的增加下载源
+
+	a)打开 C:\strawberry\perl\lib\CPAN\Config.pm
+	b)找到 urllist,增加几个下载源地址
+			下载源地址从  http://mirrors.xmu.edu.cn/CPAN/SITES.html  找,
+			里面有所有的下载源地址,因为perl是日本人开发,所以首先选择增加下面两个下载源
+			ftp://ftp.nara.wide.ad.jp/pub/CPAN/
+			http://ftp.nara.wide.ad.jp/pub/CPAN/
+
+	c)保存,退出
+	d)重新使用cpan下载

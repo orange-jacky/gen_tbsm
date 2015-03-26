@@ -1,0 +1,85 @@
+window
+
+1.安装perl
+
+  64位win系统
+  	安装strawberry-perl-5.18.4.1-64bit.msi
+  32位win系统
+  	从官网下载32位的strawberry-perl
+
+2.安装PAR-Packer-1.025依赖包
+依次检查下面的依赖包是否安装,没有安装,请进入cpan安装
+perldoc Archive::Zip
+perldoc Compress::Zlib
+perldoc File::Temp
+perldoc Getopt::ArgvFile
+perldoc IO::Compress::Gzip
+perldoc Module::ScanDeps
+perldoc PAR
+perldoc PAR::Dist
+perldoc Text::ParseWords
+
+如果没有安装,打开终端,输入cpan
+install Archive::Zip
+install Compress::Zlib
+install File::Temp
+install Getopt::ArgvFile
+install IO::Compress::Gzip
+install Module::ScanDeps
+install PAR
+install PAR::Dist
+install Text::ParseWords
+
+3.打开一个cmd
+	输入 cpan pp
+	如果安装失败,请输入 cpan -fi pp   (多次几次可以装成功)
+4.下载perl脚本中用到模块
+
+	window图形程序会用到Win32::GUI
+	下载Win32::GUI
+		输入 cpan -i  Win32::GUI
+			 如果安装失败,输入 cpan -fi  Win32::GUI    (多次几次可以装成功)
+
+	window读写word,excel程序会用到Win32::OLE  (strawberry-perl-5.18.4.1-64bit.msi默认已经安装Win32::OLE,可以跳过这步)
+		输入 cpan -i Win32::OLE
+	
+5.转换成exe
+	pp -o result.exe source.pl
+
+	添加 -gui 参数,转换出来的exe程序不包含命令行, -gui只限于window使用
+	pp -gui -o result.exe source.pl
+
+
+
+
+cpan安装失败解决办法:
+cpan -fi module:name
+这样即使在make test出错也能正常安装
+
+
+
+上述办法还是经常安装失败:
+	这时需要适当的增加下载源
+
+	a)打开 C:\strawberry\perl\lib\CPAN\Config.pm
+	b)找到 urllist,增加几个下载源地址
+			下载源地址从  http://mirrors.xmu.edu.cn/CPAN/SITES.html  找,
+			里面有所有的下载源地址,因为perl是日本人开发,所以首先选择增加下面两个下载源
+			ftp://ftp.nara.wide.ad.jp/pub/CPAN/
+			http://ftp.nara.wide.ad.jp/pub/CPAN/
+
+	c)保存,退出
+	d)重新使用cpan下载
+
+
+
+
+
+
+
+
+
+
+
+
+
